@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.divya.vehiclelisticle.R;
+import com.example.divya.vehiclelisticle.Util;
 import com.example.divya.vehiclelisticle.adapter.VehicleDataAdapter;
 import com.example.divya.vehiclelisticle.model.Vehicle;
 import com.example.divya.vehiclelisticle.model.VehicleResponse;
@@ -40,10 +41,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mCompositeDisposable = new CompositeDisposable();
-        initRecyclerView();
-        loadVehicleJSON();
+        try {
+            setContentView(R.layout.activity_main);
+            mCompositeDisposable = new CompositeDisposable();
+            initRecyclerView();
+            if (Util.isConnected(this)) {
+                loadVehicleJSON();
+            } else {
+                Toast.makeText(this, R.string.no_network, Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            e.getMessage();
+        }
+
     }
 
     private void initRecyclerView() {
@@ -76,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(Throwable e) {
-                Log.d("error",e.toString());
+                Toast.makeText(MainActivity.this, "Error in fetching data. " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
