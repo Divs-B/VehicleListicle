@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.example.divya.vehiclelisticle.R;
-import com.example.divya.vehiclelisticle.Util;
+import com.example.divya.vehiclelisticle.utils.Util;
 import com.example.divya.vehiclelisticle.adapter.VehicleDataAdapter;
 import com.example.divya.vehiclelisticle.model.Vehicle;
 import com.example.divya.vehiclelisticle.model.VehicleResponse;
