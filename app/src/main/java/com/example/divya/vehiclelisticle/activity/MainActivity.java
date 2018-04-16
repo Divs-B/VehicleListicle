@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             mCompositeDisposable = new CompositeDisposable();
             initRecyclerView();
-            if (Util.isConnected(this)) {
+            if (Util.isConnectedToNetwork(this)) {
                 loadVehicleJSON();
             } else {
                 Toast.makeText(this, R.string.no_network, Toast.LENGTH_SHORT).show();

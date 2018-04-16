@@ -17,10 +17,10 @@ public class UtilTest extends InstrumentationTestCase {
 
 
     @Test
-    public void testisConnected() {
+    public void testisConnectedToNetwork() {
 
         final String url = "www.google.com";
         RenamingDelegatingContext context = new RenamingDelegatingContext(getInstrumentation().getTargetContext(), "test_");
-        assertEquals(true, Util.isConnected(context));
+        assertEquals(true, Util.isConnectedToNetwork(context));
     }
 }
